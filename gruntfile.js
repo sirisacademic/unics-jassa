@@ -5,16 +5,11 @@ module.exports = function(grunt) {
       pkg: grunt.file.readJSON('package.json'),
       concat: {
           dist: {
-              src : 'scripts/*.js',
+              // order is relevant: first the file with the declaration of the angular module
+              src : ['scripts/UnicsJassa.js', 'scripts/*.js'],
               dest: 'dist/unics-jassa.js'
           }
       },
-      /*min: {
-        dist: {
-          src: 'dist/unics-jassa.js',
-          dest: 'dist/unics-jassa.min.js'
-        }
-      }*/
       uglify: {
         src: {
           files: {
