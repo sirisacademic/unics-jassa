@@ -11,6 +11,9 @@ module.exports = function(grunt) {
           }
       },
       uglify: {
+        options : {
+          mangle : false
+        },
         src: {
           files: {
             'dist/unics-jassa.min.js': 'dist/unics-jassa.js'
