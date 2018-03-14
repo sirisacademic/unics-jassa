@@ -1,0 +1,24 @@
+{
+  "name": "unics-jassa",
+  "description": "A set of utilities to use jassa in UNICS related projects",
+  "main": [
+    "dist/unics-jassa.min.js"
+  ],
+  "authors": [
+    "xavi.gimenez@sirisacademic.com"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "unics",
+    "jassa",
+    "sparql"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

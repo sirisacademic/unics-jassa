@@ -1,0 +1,17 @@
+{
+  "name": "unics-jassa",
+  "version": "1.0.0",
+  "description": "A set of utilities to use jassa in UNICS related projects",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "xavi.gimenez@sirisacademic.com",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt": "^1.0.2",
+    "grunt-concat": "^0.1.6",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-uglify": "^3.3.0",
+    "grunt-min": "^0.1.0"
+  }
+}
