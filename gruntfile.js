@@ -19,12 +19,24 @@ module.exports = function(grunt) {
             'dist/unics-jassa.min.js': 'dist/unics-jassa.js'
           }
         }
+      },
+      jsdox: {
+        generate: {
+          options: {
+            contentsTitle: 'Documentation',
+          },
+
+          src: ['scripts/*.js'],
+          dest: 'docs/markdown'
+        }
       }
     });
     
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-jsdox');
 
     // Default task(s).
-    grunt.registerTask('default', ['concat', 'uglify']); 
+    grunt.registerTask('generate-docs', ['jsdox:generate']);
+    grunt.registerTask('default', ['concat', 'uglify', 'jsdox']); 
   };

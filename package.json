@@ -8,10 +8,17 @@
   "author": "xavi.gimenez@sirisacademic.com",
   "license": "ISC",
   "devDependencies": {
+    "angular-jsdoc": "^1.5.0",
     "grunt": "^1.0.2",
     "grunt-concat": "^0.1.6",
     "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-uglify": "^3.3.0",
-    "grunt-min": "^0.1.0"
+    "grunt-jsdoc": "^2.2.1",
+    "grunt-jsdoc-to-markdown": "^4.0.0",
+    "grunt-jsdox": "^0.1.7",
+    "grunt-min": "^0.1.0",
+    "grunt-ngdocs": "^0.2.11",
+    "jsdoc": "^3.5.5",
+    "jsdox": "^0.4.10"
   }
 }

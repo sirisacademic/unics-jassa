@@ -27,7 +27,7 @@ angular.module('UnicsJassa')
      * Converts a Node_Uri to a String
      * 
      * @param {any} node_uri 
-     * @returns 
+     * @returns {string}
      */
     function asString(node_uri) {
       return rdf.NodeUtils.toPrettyString(node_uri);
@@ -39,7 +39,7 @@ angular.module('UnicsJassa')
      * Converts a Node_Uri to a Var
      * 
      * @param {any} node_uri 
-     * @returns 
+     * @returns {NodeVar}
      */
     function asVar(node_uri) {
       return rdf.NodeFactory.createVar(
@@ -55,7 +55,7 @@ angular.module('UnicsJassa')
      * array of Vars
      * 
      * @param {any} node_uris 
-     * @returns 
+     * @returns {array}
      */
     function asVars(node_uris) {
       return _(node_uris)
