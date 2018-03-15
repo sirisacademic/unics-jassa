@@ -48,7 +48,7 @@ angular.module('UnicsJassa')
      * @param {any} aggregateSpecs 
      * @returns {varExprList} array of aggregations
      */
-    this.generateAggregators = function(aggregateSpecs) {
+    function generateAggregators(aggregateSpecs) {
       var varExprList = new sparql.VarExprList(),
           agg;
 
