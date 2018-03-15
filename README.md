@@ -2,6 +2,17 @@
 An angular module with a facade to interact with the [Jassa library](https://github.com/sirisacademic/Jassa-Core), and some services to config endpoints/prefixes/taxonomies in the context of projects related to UNICS.
 
 
+---
+
+
+#### Documentation ####
+There is documentation automatically generated from the jsDoc annotation in the js files
+[Visit the docs](/docs/markdown/readme.md)
+
+
+---
+
+
 ##### Requeriments #####
 * A config file (/config/unics-config-json) in the angular app using this angular module dependency.
 * the jassa library already loaded (since this add jassa and submodules to the global namespace) 
