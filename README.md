@@ -7,7 +7,14 @@ An angular module with a facade to interact with the [Jassa library](https://git
 
 #### Documentation ####
 There is documentation automatically generated from the jsDoc annotation in the js files
-[Visit the docs](/docs/markdown/readme.md)
+
+[Visit the Table Of Content for the docs](/docs/markdown/readme.md)
+
+
+The SparqlFacade is the service that offers methods as 'shortcuts' to operate with the Jassa libray, with the aim of reducing the complexity when doing common operations.
+
+[Visit the documentation of the Facade](/docs/markdown/scripts/sparqlfacade.service.md)
+
 
 
 ---
