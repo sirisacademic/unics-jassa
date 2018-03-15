@@ -26,7 +26,8 @@ angular.module('UnicsJassa')
       getVarsAndValuesFromFilter : getVarsAndValuesFromFilter,
       negateFilter : negateFilter,
       constraintBoolean : constraintBoolean,
-      findElementFiltersByVars : findElementFiltersByVars
+      findElementFiltersByVars : findElementFiltersByVars,
+      queryExtendedNamesForType : queryExtendedNamesForType
     };
 
     return service;
@@ -38,13 +39,16 @@ angular.module('UnicsJassa')
 
 
     /**
+     * @ngdoc function
+     * @name generateAggregators
+     * @description
      * Generates a varExprList containing the aggregators indicated in
      * an array of AggregateSpecification
      * 
      * @param {any} aggregateSpecs 
-     * @returns varExprList array of aggregations
+     * @returns {varExprList} array of aggregations
      */
-    function generateAggregators(aggregateSpecs) {
+    this.generateAggregators = function(aggregateSpecs) {
       var varExprList = new sparql.VarExprList(),
           agg;
 
@@ -117,7 +121,7 @@ angular.module('UnicsJassa')
      * @param {any} subject 
      * @param {any} predicate 
      * @param {any} object 
-     * @returns 
+     * @returns rdf.Triple
      */
     function triple(subject, predicate, object) {
       return new rdf.Triple(
@@ -176,7 +180,7 @@ angular.module('UnicsJassa')
      * @param {any} subject 
      * @param {any} predicate 
      * @param {any} literalValue 
-     * @returns 
+     * @returns rdf.Triple 
      */
     function constraint(subject, predicate, literalValue) {
       return new rdf.Triple(
@@ -406,5 +410,25 @@ angular.module('UnicsJassa')
 
 
 
-
+    /** 
+     * Generates a varExprList and a QueryPattern to perform queries like:
+     *  Prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+        Prefix dcterms: <http://purl.org/dc/terms/> 
+        Select Distinct ?propertyLabel {
+          ?type rdf:type ontop:type . 
+          ?type ontop:extendedName ?propertyLabel
+        } 
+     * @param {any} type Type of object we want to explore
+     * @param {any} propertyLabel values of this property, for the type of object specified
+     * @returns Object { varExprList: VarExprList, queryPattern : QueryPattern]
+     */
+    function queryExtendedNamesForType(type, propertyLabel) {
+      var varExprList = new sparql.VarExprList();
+      varExprList.add(unics.asVar(propertyLabel));
+      
+      return {
+        varExprList : varExprList, 
+        queryPattern : exploreObjectType(type, type, [ { p: unics.extendedName, o: propertyLabel }])
+      };
+    }
   });
