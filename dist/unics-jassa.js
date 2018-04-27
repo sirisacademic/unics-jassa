@@ -535,7 +535,9 @@ angular.module('UnicsJassa')
       asString : asString,
       extendedNameOf : extendedNameOf,
       identifierOf : identifierOf,
-      shortNameOf : shortNameOf
+      shortNameOf : shortNameOf,
+      acronymOf : acronymOf,
+      textualValueOf : textualValueOf
       // nodes created from the taxonomy will be included here
       // ...
     }
@@ -616,6 +618,43 @@ angular.module('UnicsJassa')
         )
       );
     }
+
+
+
+    /**
+     * Creates a new node_uri, concatenating the label of the existing one 
+     * with the the label of node_uri 'acronym'
+     * @param {*} node_uri 
+     */
+    function acronymOf(node_uri) {
+      return combineNodeUris(
+        node_uri, 
+        service.acronym,
+        Prefixes.getUriPrefix(
+          Prefixes.prefixMapping.getNsURIPrefix(node_uri.getUri())  
+        )
+      );
+    }
+
+
+
+
+
+    /**
+     * Creates a new node_uri, concatenating the label of the existing one 
+     * with the the label of node_uri 'textualValue'
+     * @param {*} node_uri 
+     */
+    function textualValueOf(node_uri) {
+      return combineNodeUris(
+        node_uri, 
+        service.textualValue,
+        Prefixes.getUriPrefix(
+          Prefixes.prefixMapping.getNsURIPrefix(node_uri.getUri())  
+        )
+      );
+    }
+
 
 
 

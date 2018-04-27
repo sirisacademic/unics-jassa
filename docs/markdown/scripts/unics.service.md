@@ -58,6 +58,30 @@ with the the label of node_uri 'shortName'
 
 
 
+### acronymOf(node_uri) 
+
+Creates a new node_uri, concatenating the label of the existing one 
+with the the label of node_uri 'acronym'
+
+**Parameters**
+
+**node_uri**: `*`, Creates a new node_uri, concatenating the label of the existing one 
+with the the label of node_uri 'acronym'
+
+
+
+### textualValueOf(node_uri) 
+
+Creates a new node_uri, concatenating the label of the existing one 
+with the the label of node_uri 'textualValue'
+
+**Parameters**
+
+**node_uri**: `*`, Creates a new node_uri, concatenating the label of the existing one 
+with the the label of node_uri 'textualValue'
+
+
+
 ### asString(node_uri) 
 
 Converts a Node_Uri to a String
