@@ -532,13 +532,90 @@ angular.module('UnicsJassa')
     var service = {
       asVar : asVar,
       asVars : asVars,
-      asString : asString
+      asString : asString,
+      extendedNameOf : extendedNameOf,
+      identifierOf : identifierOf,
+      shortNameOf : shortNameOf
       // nodes created from the taxonomy will be included here
       // ...
     }
 
 
     ////////////////////////////////////////////////////////////////////////////////
+
+
+    /**
+     * Concatenates labels of two nodes_uris to create a new node_uri,
+     * using the specified uri
+     * @param {node_uri} node_uri1 first node_uri
+     * @param {node_uri} node_uri2 second node_uri
+     * @param {uri} uri 
+     */
+    function combineNodeUris(node_uri1, node_uri2, uri) {
+    // get label and concat with the label of node 'extendedName'  
+      var label = jassa.util.UriUtils.extractLabel(node_uri1.getUri()) + 
+                    _.capitalize(
+                      jassa.util.UriUtils.extractLabel(
+                        node_uri2.getUri()
+                        )
+                      );
+      
+      return rdf.NodeFactory.createUri(uri + label);
+    }
+
+
+
+
+    /**
+     * Creates a new node_uri, concatenating the label of the existing one 
+     * with the the label of node_uri 'extendedName'
+     * @param {node_uri} node_uri 
+     */
+    function extendedNameOf(node_uri) {
+      return combineNodeUris(
+        node_uri, 
+        service.extendedName,
+        Prefixes.getUriPrefix(
+          Prefixes.prefixMapping.getNsURIPrefix(node_uri.getUri())  
+        )
+      );
+    }
+
+
+
+
+    /**
+     * Creates a new node_uri, concatenating the label of the existing one 
+     * with the the label of node_uri 'identifier'
+     * @param {*} node_uri 
+     */
+    function identifierOf(node_uri) {
+      return combineNodeUris(
+        node_uri, 
+        service.identifier,
+        Prefixes.getUriPrefix(
+          Prefixes.prefixMapping.getNsURIPrefix(node_uri.getUri())  
+        )
+      );
+    }
+
+
+
+
+    /**
+     * Creates a new node_uri, concatenating the label of the existing one 
+     * with the the label of node_uri 'shortName'
+     * @param {*} node_uri 
+     */
+    function shortNameOf(node_uri) {
+      return combineNodeUris(
+        node_uri, 
+        service.shortName,
+        Prefixes.getUriPrefix(
+          Prefixes.prefixMapping.getNsURIPrefix(node_uri.getUri())  
+        )
+      );
+    }
 
 
 

@@ -6,6 +6,58 @@
 
 * * *
 
+### combineNodeUris(node_uri1, node_uri2, uri) 
+
+Concatenates labels of two nodes_uris to create a new node_uri,
+using the specified uri
+
+**Parameters**
+
+**node_uri1**: `node_uri`, first node_uri
+
+**node_uri2**: `node_uri`, second node_uri
+
+**uri**: `uri`, Concatenates labels of two nodes_uris to create a new node_uri,
+using the specified uri
+
+
+
+### extendedNameOf(node_uri) 
+
+Creates a new node_uri, concatenating the label of the existing one 
+with the the label of node_uri 'extendedName'
+
+**Parameters**
+
+**node_uri**: `node_uri`, Creates a new node_uri, concatenating the label of the existing one 
+with the the label of node_uri 'extendedName'
+
+
+
+### identifierOf(node_uri) 
+
+Creates a new node_uri, concatenating the label of the existing one 
+with the the label of node_uri 'identifier'
+
+**Parameters**
+
+**node_uri**: `*`, Creates a new node_uri, concatenating the label of the existing one 
+with the the label of node_uri 'identifier'
+
+
+
+### shortNameOf(node_uri) 
+
+Creates a new node_uri, concatenating the label of the existing one 
+with the the label of node_uri 'shortName'
+
+**Parameters**
+
+**node_uri**: `*`, Creates a new node_uri, concatenating the label of the existing one 
+with the the label of node_uri 'shortName'
+
+
+
 ### asString(node_uri) 
 
 Converts a Node_Uri to a String
