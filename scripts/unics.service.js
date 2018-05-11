@@ -18,7 +18,8 @@ angular.module('UnicsJassa')
       identifierOf : identifierOf,
       shortNameOf : shortNameOf,
       acronymOf : acronymOf,
-      textualValueOf : textualValueOf
+      textualValueOf : textualValueOf,
+      combineNodes : combineNodes
       // nodes created from the taxonomy will be included here
       // ...
     }
@@ -44,6 +45,29 @@ angular.module('UnicsJassa')
                       );
       
       return rdf.NodeFactory.createUri(uri + label);
+    }
+
+
+
+    /**
+     * Creates a new node_uri, concatenating the label of
+     * the two nodes
+     * @param {node_uri} node_uri1 first node_uri
+     * @param {node_uri} node_uri2 second node_uri
+     */
+    function combineNodes(node_uri1, node_uri2) {
+      if ( Prefixes.getUriPrefix(Prefixes.prefixMapping.getNsURIPrefix(node_uri1.getUri())) !=
+           Prefixes.getUriPrefix(Prefixes.prefixMapping.getNsURIPrefix(node_uri2.getUri()))
+        )
+        return console.error("node_uris must have same URI");
+
+      return combineNodeUris(
+        node_uri1, 
+        node_uri2,
+        Prefixes.getUriPrefix(
+          Prefixes.prefixMapping.getNsURIPrefix(node_uri.getUri())  
+        )
+      );
     }
 
 

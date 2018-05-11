@@ -22,6 +22,19 @@ using the specified uri
 
 
 
+### combineNodes(node_uri1, node_uri2) 
+
+Creates a new node_uri, concatenating the label of
+the two nodes
+
+**Parameters**
+
+**node_uri1**: `node_uri`, first node_uri
+
+**node_uri2**: `node_uri`, second node_uri
+
+
+
 ### extendedNameOf(node_uri) 
 
 Creates a new node_uri, concatenating the label of the existing one 
