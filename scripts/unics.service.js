@@ -65,7 +65,7 @@ angular.module('UnicsJassa')
         node_uri1, 
         node_uri2,
         Prefixes.getUriPrefix(
-          Prefixes.prefixMapping.getNsURIPrefix(node_uri.getUri())  
+          Prefixes.prefixMapping.getNsURIPrefix(node_uri1.getUri())  
         )
       );
     }
