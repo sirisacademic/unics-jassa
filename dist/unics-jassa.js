@@ -41,7 +41,7 @@ angular.module('UnicsJassa')
   .service('AggregateFunctions', function () {
     
     var sparql = jassa.sparql,
-        aggregateFunctions = _.map([sparql.AggAvg, sparql.AggCount, sparql.AggMax, sparql.AggMin, sparql.AggSum ],
+        aggregateFunctions = _.map([sparql.AggAvg, sparql.AggCount, sparql.AggMax, sparql.AggMin, sparql.AggSum, sparql.AggGroup_Concat],
             function(aggClass) {
                 return (new aggClass()).name;
             }
@@ -152,7 +152,10 @@ angular.module('UnicsJassa')
             break;
           case AggregateFunctions.SUM: 
             agg = sparql.AggregatorFactory.createSum(aggSpec.isDistinct, aggSpec.getVar()); 
-            break;            
+            break;
+          case AggregateFunctions.GROUP_CONCAT: 
+            agg = sparql.AggregatorFactory.createGroup_Concat(aggSpec.isDistinct, aggSpec.getVar(), aggSpec.separator); 
+            break;                        
         };
 
         varExprList.add(

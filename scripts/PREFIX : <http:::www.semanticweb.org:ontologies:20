@@ -1,0 +1,143 @@
+PREFIX : <http://www.semanticweb.org/ontologies/2016/4/untitled-ontology-69#>
+
+PREFIX ris3cat: <http://www.semanticweb.org/ontologies/2016/4/untitled-ontology-69/ris3cat#>
+
+SELECT
+
+    ?projectId ?projectTitle ?projectAbstract ?totalInvestment ?totalGrant ?instrumentIdentifier ?instrumentExtendedName ?organizationId ?organizationName ?ecActivityTypeExtendedName ?frameworkName ?classificationTypeName ?classificationName ?startingDate ?endingDate (GROUP_CONCAT(DISTINCT ?keyword ; separator="|") AS ?keywords)
+
+WHERE {
+
+   {{
+
+        ?project a :Project .
+        ?project :projectId ?projectId .
+        ?project :title ?projectTitle .
+        ?project :abstract ?projectAbstract .
+        ?project :startingDate ?startingDate .
+        ?project :endingDate ?endingDate .
+        ?project :framework ?framework .
+        ?project :instrument ?instrument .
+        ?project :reifiedParticipant ?participant .
+
+        ?framework :extendedName ?frameworkName .
+
+        FILTER (?frameworkName = "H2020")
+
+        ?instrument :shortName ?instrumentIdentifier .
+        ?instrument :extendedName ?instrumentExtendedName .
+
+        ?participant :nuts2 ?nuts2 .
+        ?participant :organization ?organization.
+        ?participant :ecActivityType ?ecActivityType .
+
+        ?nuts2 :identifier ?nuts2Identifier .
+
+        FILTER (?nuts2Identifier = "ES51")
+
+        ?organization :unicsId ?organizationId .
+        ?organization :extendedName ?organizationName .
+        ?ecActivityType :extendedName ?ecActivityTypeExtendedName .
+
+        optional {
+
+            ?project :classification ?classification .
+            ?classification :classificationName ?classificationTypeName .
+            ?classification :extendedName ?classificationName .
+        }
+
+        optional { ?project :totalInvestment ?totalInvestment . }
+        optional { ?project :totalGrant ?totalGrant . }
+
+        optional {
+            ?project :keyword ?keywordProp .
+            ?keywordProp :textualValue ?keyword .
+        }
+
+    }
+
+    UNION
+
+    {
+
+        ?project a :Project .
+
+        ?project :projectId ?projectId .
+
+        ?project :title ?projectTitle .
+
+        ?project :abstract ?projectAbstract .
+
+        ?project :startingDate ?startingDate .
+
+        ?project :endingDate ?endingDate .
+
+
+        ?project:framework ?framework .
+
+        ?framework :extendedName ?frameworkName .
+
+        FILTER (?frameworkName = "Instruments RIS3CAT")
+
+
+        ?project :instrument ?instrument .
+
+        ?instrument :shortName ?instrumentIdentifier .
+
+        ?instrument :extendedName ?instrumentExtendedName .
+
+
+        ?project :reifiedParticipant ?participant .
+
+        ?participant :nuts2 ?nuts2 .
+
+        ?nuts2 :identifier ?nuts2Identifier .
+
+        FILTER (?nuts2Identifier = "ES51")
+
+ 
+
+        ?participant :organization ?organization.
+
+        ?organization :unicsId ?organizationId .
+
+        ?organization :extendedName ?organizationName .
+
+
+        ?participant :ecActivityType ?ecActivityType .
+
+        ?ecActivityType :extendedName ?ecActivityTypeExtendedName .
+
+
+        optional {
+
+            ?project :classification ?classification .
+
+            ?classification :classificationName ?classificationTypeName .
+
+            ?classification :extendedName ?classificationName .
+
+        }
+
+      
+
+        optional { ?project :totalInvestment ?totalInvestment . }
+
+        optional { ?project :totalGrant ?totalGrant . }
+
+    
+
+        optional {
+
+            ?project :keyword ?keywordProp .
+
+            ?keywordProp :textualValue ?keyword .
+
+        }
+
+
+    }}
+
+}
+
+GROUP BY  ?projectId ?projectTitle ?projectAbstract ?totalInvestment ?totalGrant ?instrumentIdentifier ?instrumentExtendedName ?organizationId ?organizationName ?ecActivityTypeExtendedName ?frameworkName ?classificationTypeName ?classificationName ?startingDate ?endingDate

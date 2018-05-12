@@ -12,7 +12,7 @@ angular.module('UnicsJassa')
   .service('AggregateFunctions', function () {
     
     var sparql = jassa.sparql,
-        aggregateFunctions = _.map([sparql.AggAvg, sparql.AggCount, sparql.AggMax, sparql.AggMin, sparql.AggSum ],
+        aggregateFunctions = _.map([sparql.AggAvg, sparql.AggCount, sparql.AggMax, sparql.AggMin, sparql.AggSum, sparql.AggGroup_Concat],
             function(aggClass) {
                 return (new aggClass()).name;
             }

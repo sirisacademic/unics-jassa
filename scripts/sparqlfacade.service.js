@@ -68,7 +68,10 @@ angular.module('UnicsJassa')
             break;
           case AggregateFunctions.SUM: 
             agg = sparql.AggregatorFactory.createSum(aggSpec.isDistinct, aggSpec.getVar()); 
-            break;            
+            break;
+          case AggregateFunctions.GROUP_CONCAT: 
+            agg = sparql.AggregatorFactory.createGroup_Concat(aggSpec.isDistinct, aggSpec.getVar(), aggSpec.separator); 
+            break;                        
         };
 
         varExprList.add(
